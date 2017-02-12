@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJS Demo</title>
+    <link rel="stylesheet" href="css/semantic.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+    <div class="masthead ui text center aligned container">
+      <h1 class="ui inverted header horizontal divider"><i class="icon desktop"></i> MovieTime</h1>
+    </div>
+    <div class="container segment ui" ng-app="movieApp" ng-controller="movieController">
+      <h1 class="ui left floated header">Movie Watch List</h1><button id="add-movie" class="ui primary button"><i class="add icon"></i> Add Movie</button>
+      <div class="divider ui"></div>
+      <div class="ui cards">
+        <div class="ui card" ng-repeat="movie in movies track by $index">
+          <div class="image">
+            <img src="images/image.png">
+          </div>
+          <div class="content">
+            <a class="header">{{ movie.title}}</a>
+            <div class="meta">
+              <span class="date">Filmed in {{ movie.yearFilmed }}</span>
+            </div>
+            <div class="description">
+              <p>{{ movie.description }}</p>
+            </div>
+          </div>
+          <div class="content extra">
+            Rating: {{ movie.rating }}/5 <i class="star icon"></i>
+          </div>
+          <div class="ui bottom attached red button" ng-click="removeMovie($index)">
+            <i class="remove circle icon"></i>
+            Remove Movie
+          </div>
+        </div>
+      </div>
+
+      <div class="ui modal">
+        <i class="close icon"></i>
+        <div class="header">
+          Add Movie
+        </div>
+        <div class="content">
+          <div class="description">
+            <form class="ui form" ng-submit="addMovie()">
+              <div class="field">
+                <label>Movie Name</label>
+                <input type="text" name="movie-name" ng-model="title" placeholder="Movie Name">
+              </div>
+              <div class="field">
+                <label>Year Filmed</label>
+                <input type="text" name="year-filmed" ng-model="yearFilmed" placeholder="e.g. 2017">
+              </div>
+              <div class="field">
+                <label for="description">Description</label>
+                <textarea name="description" ng-model="description" rows="8" cols="80"></textarea>
+              </div>
+              <div class="field">
+                <label>Your Rating</label>
+                <input type="number" name="rating" ng-model="rating" placeholder="e.g. 4" min="0" max="5">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="ui black deny button">
+            Cancel
+          </div>
+          <div class="ui positive right labeled icon button" ng-click="addMovie()">
+            Yup it's one of my favourites
+            <i class="checkmark icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- <h2 class="ui header">Add Movie</h2>
+      <form class="ui form" ng-submit="addMovie()">
+        <div class="field">
+          <label>Movie Name</label>
+          <input type="text" name="movie-name" ng-model="title" placeholder="Movie Name">
+        </div>
+        <div class="field">
+          <label>Year Filmed</label>
+          <input type="text" name="year-filmed" ng-model="yearFilmed" placeholder="e.g. 2017">
+        </div>
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea name="description" ng-model="description" rows="8" cols="80"></textarea>
+        </div>
+        <div class="field">
+          <label>Your Rating</label>
+          <input type="number" name="rating" ng-model="rating" placeholder="e.g. 4" min="0" max="5">
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+      </form> -->
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" charset="utf-8"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js" charset="utf-8"></script> -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js" charset="utf-8"></script>
+    <script src="js/semantic.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+  </body>
+</html>

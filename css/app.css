@@ -1,0 +1,12 @@
+body {
+  background: url('../images/4slz_rck6kq-lloyd-dirks.jpg') no-repeat top center;
+  background-size: 100vw;
+  padding-top: 60px;
+}
+
+.masthead {
+  margin: 20px auto 40px;
+}
+.masthead .ui.header {
+  font-size: 4em;
+}
